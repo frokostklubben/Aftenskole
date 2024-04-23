@@ -1,6 +1,7 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../database.js';
-import Teacher from '../teacher.js';
+// @ts-ignore
+import Teacher from './teacher.js';
 
 const course = sequelize.define(
   'Course',

@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../database.js';
+// @ts-ignore
 import location from './location.js';
 
 const classroom = sequelize.define(
@@ -15,7 +16,7 @@ const classroom = sequelize.define(
       allowNull: false,
       references: {
         model: location,
-        key: 'location_id', // foreign key
+        key: 'location_id',
       },
     },
     purpose: {
@@ -24,8 +25,8 @@ const classroom = sequelize.define(
     },
     capacity: {
       type: DataTypes.INTEGER,
-      allowNull: false
-    }
+      allowNull: false,
+    },
   },
   {
     timestamps: false,
@@ -34,10 +35,10 @@ const classroom = sequelize.define(
 );
 
 try {
-  await sequelize.sync(); // { alter: true } ?
-  console.log('Location table updated successfully');
+  await sequelize.sync();
+  console.log('Classroom table was just (re)created successfully!');
 } catch (error) {
-  console.error('Error updating the location table:', err);
+  console.error('Error updating the classroom table:', err);
   throw err;
 }
 

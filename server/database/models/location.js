@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../database.js';
+// @ts-ignore
 import eveningSchool from './eveningSchool.js';
 
 const location = sequelize.define(

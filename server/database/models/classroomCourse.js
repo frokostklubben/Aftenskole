@@ -1,20 +1,21 @@
+import { DataTypes } from 'sequelize';
 import sequelize from '../database.js';
-import Course from '../course.js';
-import Classroom from '../classroom.js';
+import Course from './course.js';
+import Classroom from './classroom.js';
 
 const classroom_course = sequelize.define(
-  'Classroom_Course',
+  'Classroom_course',
   {
-    courseId: {
-      type: sequelize.DataTypes.INTEGER,
+    course_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: Course,
         key: 'course_id',
       },
     },
-    classroomId: {
-      type: sequelize.DataTypes.INTEGER,
+    room_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: Classroom,
