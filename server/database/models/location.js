@@ -1,7 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../database.js';
-// @ts-ignore
-import school from './school.js';
+import eveningSchool from './eveningSchool.js';
 
 const location = sequelize.define(
   'Location',
@@ -15,7 +14,7 @@ const location = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: school,
+        model: eveningSchool,
         key: 'school_id', // foreign key
       },
     },
