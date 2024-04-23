@@ -15,7 +15,7 @@ const eveningSchool = sequelize.define(
       allowNull: true,
       references: {
         model: user,
-        key: 'user_id', // foreign key
+        key: 'user_id', 
       },
     },
   },
@@ -25,6 +25,6 @@ const eveningSchool = sequelize.define(
   },
 );
 
-await sequelize.sync(); // { alter: true } ?
+await sequelize.sync(); 
 
 export default eveningSchool;
