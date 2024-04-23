@@ -1,46 +1,35 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../database.js';
-import eveningSchool from './eveningSchool.js';
+import location from './location.js';
 
-const location = sequelize.define(
-  'Location',
+const classroom = sequelize.define(
+  'Classroom',
   {
-    location_id: {
+    room_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    school_id: {
+    location_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: eveningSchool,
-        key: 'school_id', // foreign key
+        model: location,
+        key: 'location_id', // foreign key
       },
     },
-    zip_code: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        is: /^\d{4}$/, // must be 4 digits
-      },
-    },
-    city: {
+    purpose: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
-    street_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    street_number: {
+    capacity: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+      allowNull: false
+    }
   },
   {
     timestamps: false,
-    tableName: 'locations',
+    tableName: 'classrooms',
   },
 );
 
@@ -52,4 +41,4 @@ try {
   throw err;
 }
 
-export default location;
+export default classroom;
