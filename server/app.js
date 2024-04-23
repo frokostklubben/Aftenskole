@@ -2,6 +2,11 @@ import express from 'express';
 
 const app = express();
 
+app.use(express.json());
+
+import usersRouter from './routers/usersRouter.js';
+app.use(usersRouter);
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, error => {
   if (error) {

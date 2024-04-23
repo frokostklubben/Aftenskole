@@ -1,8 +1,8 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../database.js';
-import EveningSchool from './EveningSchool.js';
+import eveningSchool from '../eveningSchool.js';
 
-const Location = sequelize.define(
+const location = sequelize.define(
   'Location',
   {
     location_id: {
@@ -14,29 +14,29 @@ const Location = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: EveningSchool,
+        model: eveningSchool,
         key: 'school_id', // foreign key
       },
     },
     zip_code: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			validate: {
-				is: /^\d{4}$/ // must be 4 digits
-			}
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        is: /^\d{4}$/, // must be 4 digits
+      },
     },
-		city: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-		street_name: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-		street_number: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-		},
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    street_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    street_number: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     timestamps: false,
@@ -44,6 +44,12 @@ const Location = sequelize.define(
   },
 );
 
-await sequelize.sync(); // { alter: true } ?
+try {
+  await sequelize.sync(); // { alter: true } ?
+  console.log('Location table updated successfully');
+} catch (error) {
+  console.error('Error updating the location table:', err);
+  throw err;
+}
 
-export default Location;
+export default location;

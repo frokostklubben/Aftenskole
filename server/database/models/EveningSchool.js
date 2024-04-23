@@ -1,8 +1,8 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../database.js';
-import User from './User.js';
+import user from '../user.js';
 
-const EveningSchool = sequelize.define(
+const eveningSchool = sequelize.define(
   'EveningSchool',
   {
     school_id: {
@@ -14,7 +14,7 @@ const EveningSchool = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: User,
+        model: user,
         key: 'user_id', // foreign key
       },
     },
@@ -27,4 +27,4 @@ const EveningSchool = sequelize.define(
 
 await sequelize.sync(); // { alter: true } ?
 
-export default EveningSchool;
+export default eveningSchool;
